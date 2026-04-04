@@ -1,0 +1,44 @@
+import { NextResponse } from 'next/server';
+import { getServerSession } from 'next-auth';
+import dbConnect from '@/lib/db/mongodb';
+import Household from '@/models/Household';
+import { authOptions } from '@/lib/authOptions';
+
+export const dynamic = 'force-dynamic';
+
+export async function GET(req: Request) {
+  try {
+    const session = await getServerSession(authOptions);
+    if (!session || (session.user as any).role !== 'asha_worker') {
+      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+    }
+
+    await dbConnect();
+    const households = await Household.find({ assignedAshaId: (session.user as any).id });
+    
+    return NextResponse.json(households, { status: 200 });
+  } catch (error: any) {
+    return NextResponse.json({ error: error.message }, { status: 500 });
+  }
+}
+
+export async function POST(req: Request) {
+  try {
+    const session = await getServerSession(authOptions);
+    if (!session || (session.user as any).role !== 'asha_worker') {
+      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+    }
+
+    await dbConnect();
+    const body = await req.json();
+    
+    const newHousehold = await Household.create({
+      ...body,
+      assignedAshaId: (session.user as any).id,
+    });
+    
+    return NextResponse.json(newHousehold, { status: 201 });
+  } catch (error: any) {
+    return NextResponse.json({ error: error.message }, { status: 500 });
+  }
+}

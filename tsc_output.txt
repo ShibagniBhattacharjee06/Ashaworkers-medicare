@@ -1,0 +1,5 @@
+﻿src/app/(dashboard)/asha/patients/page.tsx(1,34): error TS2307: Cannot find module 'next/auth' or its corresponding type declarations.
+src/app/(dashboard)/patient/page.tsx(2,34): error TS2307: Cannot find module 'next/auth' or its corresponding type declarations.
+src/app/api/admin/analytics/route.ts(5,34): error TS2307: Cannot find module 'next/auth' or its corresponding type declarations.
+src/app/api/admin/staff/route.ts(4,34): error TS2307: Cannot find module 'next/auth' or its corresponding type declarations.
+src/app/api/patients/[id]/vitals/route.ts(5,34): error TS2307: Cannot find module 'next/auth' or its corresponding type declarations.
