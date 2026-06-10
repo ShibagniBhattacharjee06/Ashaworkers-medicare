@@ -63,21 +63,27 @@ This project is one of the core modules of the Medicare Healthcare Platform.
 Each module is independently developed and deployed while remaining integrated through the centralized Medicare platform.
 
 ```text
-                     Medicare Platform
-                 (medicare-beryl.vercel.app)
+              ┌───────────────────────────────────────────────────────┐
+│                 MEDICARE PLATFORM                     │
+│           https://medicare-beryl.vercel.app           │
+└───────────────────────────────────────────────────────┘
+                           │
+                           ▼
 
-                              │
-     ┌────────────┬────────────┬────────────┬────────────┬────────────┐
-     │            │            │            │            │
- Tuberculosis  Fracture    Brain Tumor   Skin AI    AI Doctor
-   Service      Service      Service      Service      Service
+┌─────────────┬─────────────┬─────────────┬─────────────┬─────────────┬─────────────┐
+│ Tuberculosis│  Fracture   │ Brain Tumor │   Skin AI   │ AI Doctor   │ ASHA Worker │
+│  Detector   │  Detector   │  Detector   │  Assistant  │  Assistant  │  Platform   │
+└─────────────┴─────────────┴─────────────┴─────────────┴─────────────┴─────────────┘
 
-                              │
-                              ▼
+                           │
+                           ▼
 
-                ASHA Worker Management Platform
+                Node.js / Express API Layer
 
-                 ashaworkers-medicare.vercel.app
+                           │
+                           ▼
+
+                      MongoDB Atlas
 ```
 
 ---
