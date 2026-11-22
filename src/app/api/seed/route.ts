@@ -5,6 +5,8 @@ import User from '@/models/User';
 import Patient from '@/models/Patient';
 import Household from '@/models/Household';
 
+export const dynamic = 'force-dynamic';
+
 export async function GET() {
   try {
     await dbConnect();
